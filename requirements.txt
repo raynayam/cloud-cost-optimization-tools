@@ -1,0 +1,27 @@
+# AWS packages
+boto3>=1.28.0
+awscli>=1.29.0
+
+# Azure packages
+azure-mgmt-resource>=21.1.0
+azure-mgmt-compute>=29.1.0
+azure-mgmt-storage>=20.1.0
+azure-mgmt-monitor>=5.0.0
+azure-mgmt-billing>=6.0.0
+azure-mgmt-costmanagement>=3.0.0
+azure-identity>=1.12.0
+azure-cli-core>=2.46.0
+
+# General utility packages
+pyyaml>=6.0
+pandas>=2.0.0
+numpy>=1.24.0
+matplotlib>=3.7.0
+tabulate>=0.9.0
+click>=8.1.0
+rich>=13.0.0
+python-dotenv>=1.0.0
+
+# Testing
+pytest>=7.3.0
+pytest-cov>=4.1.0 

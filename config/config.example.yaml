@@ -1,0 +1,82 @@
+# Cloud Cost Optimization Tools - Example Configuration
+
+# General settings
+general:
+  output_dir: "./reports"
+  log_level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  default_region: "us-east-1"  # Default region for AWS
+
+# AWS configuration
+aws:
+  enabled: true
+  # Either specify profile or access/secret keys
+  profile: "default"  # AWS CLI profile name
+  # access_key_id: "YOUR_AWS_ACCESS_KEY"  # Alternative to profile
+  # secret_access_key: "YOUR_AWS_SECRET_KEY"  # Alternative to profile
+  regions:
+    - "us-east-1"
+    - "us-west-2"
+    - "eu-west-1"
+  analysis:
+    lookback_days: 30  # Days of cost history to analyze
+    include_services:
+      - "ec2"
+      - "rds"
+      - "s3"
+      - "lambda"
+      - "ebs"
+    exclude_services: []
+  optimization:
+    ec2:
+      min_cpu_utilization: 5.0  # Percentage threshold for underutilization
+      min_uptime_hours: 168  # Minimum hours (1 week) to consider for rightsizing
+    rds:
+      min_connection_count: 5
+    s3:
+      lifecycle_rules_enabled: true
+      infrequent_access_days: 30
+      glacier_days: 90
+      cleanup_incomplete_mpu_days: 7
+
+# Azure configuration
+azure:
+  enabled: true
+  # Authentication options (uncomment one)
+  # auth_method: "cli"  # Use Azure CLI auth
+  auth_method: "service_principal"  # Use Service Principal auth
+  tenant_id: "YOUR_AZURE_TENANT_ID"
+  client_id: "YOUR_AZURE_CLIENT_ID"
+  client_secret: "YOUR_AZURE_CLIENT_SECRET"
+  subscription_ids:
+    - "YOUR_AZURE_SUBSCRIPTION_ID"
+  analysis:
+    lookback_days: 30
+    include_services:
+      - "compute"
+      - "storage"
+      - "database"
+      - "network"
+    exclude_services: []
+  optimization:
+    vm:
+      min_cpu_utilization: 5.0
+      min_uptime_hours: 168
+    storage:
+      lifecycle_enabled: true
+      cool_tier_days: 30
+      archive_tier_days: 90
+    
+# Reporting configuration
+reporting:
+  format: "html"  # html, csv, json
+  include_charts: true
+  sort_by: "potential_savings"  # potential_savings, current_cost
+  email:
+    enabled: false
+    smtp_server: "smtp.example.com"
+    smtp_port: 587
+    smtp_username: "username"
+    smtp_password: "password"
+    sender: "cloud-cost-reports@example.com"
+    recipients:
+      - "admin@example.com" 
