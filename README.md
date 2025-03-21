@@ -15,7 +15,7 @@ A comprehensive toolkit for analyzing and optimizing cloud resource usage and co
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/cloud-cost-optimization-tools.git
+git clone https://github.com/raynayam/cloud-cost-optimization-tools.git
 cd cloud-cost-optimization-tools
 
 # Set up Python virtual environment
